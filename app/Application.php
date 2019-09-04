@@ -10,14 +10,14 @@ class Application extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo(Category::class);
     }
 
     public function users() {
-        return $this->belongsToMany('App\AppUser','application_user','application_id','user_id');
+        return $this->belongsToMany(AppUser::class,'application_user','application_id','user_id');
     }
 
     public function platforms() {
-        return $this->belongsToMany('\App\Platform')->withPivot('minversion');
+        return $this->belongsToMany(Platform::class)->withPivot('minversion');
     }
 }

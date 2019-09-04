@@ -10,6 +10,6 @@ class AppUser extends Model
     public $table = 'users';
 
     public function applications() {
-        return $this->belongsToMany('App\Application','application_user','user_id','application_id');
+        return $this->belongsToMany(Application::class,'application_user','user_id','application_id');
     }
 }
