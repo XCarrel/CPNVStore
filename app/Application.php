@@ -20,4 +20,9 @@ class Application extends Model
     public function platforms() {
         return $this->belongsToMany(Platform::class)->withPivot('minversion');
     }
+
+    public function suppliers() {
+        return $this->belongsToMany(AppUser::class,'application_supplier','application_id','user_id')->withPivot('role_id');
+    }
+
 }

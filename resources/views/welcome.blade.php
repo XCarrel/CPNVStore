@@ -112,14 +112,20 @@
         <table>
             <tr>
                 <th>Nom</th>
-                <th>Applications</th>
+                <th>Applications utilisées</th>
+                <th>Applications fournies</th>
             </tr>
             @foreach ($users as $user)
                 <tr>
                     <td>{{ $user->firstname }} {{ $user->lastname }}</td>
                     <td>
-                        @foreach ($user->applications as $app)
+                        @foreach ($user->applicationsUsed as $app)
                             {{ $app->name }},
+                        @endforeach
+                    </td>
+                    <td>
+                        @foreach ($user->applicationsSupplied as $app)
+                            {{ $app->name }} (as {{ \App\Role::find($app->pivot->role_id)->name }}),
                         @endforeach
                     </td>
                 </tr>
