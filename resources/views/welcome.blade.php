@@ -86,11 +86,30 @@
         <h1>Liste d'applications</h1>
         <table>
             <tr>
-                <th>Nom</th><th>Catégorie</th>
+                <th>Nom</th>
+                <th>Catégorie</th>
             </tr>
             @foreach ($apps as $app)
                 <tr>
-                    <td>{{ $app->name }}</td><td>{{ $app->category->name }}</td>
+                    <td>{{ $app->name }}</td>
+                    <td>{{ $app->category->name }}</td>
+                </tr>
+            @endforeach
+        </table>
+        <h1>Liste de catégories</h1>
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>Applications</th>
+            </tr>
+            @foreach ($categories as $category)
+                <tr>
+                    <td>{{ $category->name }}</td>
+                    <td>
+                        @foreach ($category->applications as $app)
+                            {{ $app->name }},
+                        @endforeach
+                    </td>
                 </tr>
             @endforeach
         </table>
