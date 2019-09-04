@@ -12,4 +12,8 @@ class Application extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function users() {
+        return $this->belongsToMany('App\AppUser','application_users','application_id','user_id');
+    }
 }

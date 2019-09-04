@@ -88,11 +88,34 @@
             <tr>
                 <th>Nom</th>
                 <th>Catégorie</th>
+                <th>Utilisateurs</th>
             </tr>
             @foreach ($apps as $app)
                 <tr>
                     <td>{{ $app->name }}</td>
                     <td>{{ $app->category->name }}</td>
+                    <td>
+                        @foreach ($app->users as $user)
+                            {{ $user->firstname }} {{ $user->lastname }},
+                        @endforeach
+                    </td>
+                </tr>
+            @endforeach
+        </table>
+        <h1>Liste d'utilisateurs</h1>
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>Applications</th>
+            </tr>
+            @foreach ($users as $user)
+                <tr>
+                    <td>{{ $user->firstname }} {{ $user->lastname }}</td>
+                    <td>
+                        @foreach ($user->applications as $app)
+                            {{ $app->name }},
+                        @endforeach
+                    </td>
                 </tr>
             @endforeach
         </table>
