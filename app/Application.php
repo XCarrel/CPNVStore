@@ -14,6 +14,10 @@ class Application extends Model
     }
 
     public function users() {
-        return $this->belongsToMany('App\AppUser','application_users','application_id','user_id');
+        return $this->belongsToMany('App\AppUser','application_user','application_id','user_id');
+    }
+
+    public function platforms() {
+        return $this->belongsToMany('\App\Platform')->withPivot('minversion');
     }
 }

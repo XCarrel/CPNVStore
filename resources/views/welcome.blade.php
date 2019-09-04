@@ -89,6 +89,7 @@
                 <th>Nom</th>
                 <th>Catégorie</th>
                 <th>Utilisateurs</th>
+                <th>Plateformes</th>
             </tr>
             @foreach ($apps as $app)
                 <tr>
@@ -97,6 +98,11 @@
                     <td>
                         @foreach ($app->users as $user)
                             {{ $user->firstname }} {{ $user->lastname }},
+                        @endforeach
+                    </td>
+                    <td>
+                        @foreach ($app->platforms as $platform)
+                            {{ $platform->name }} ({{ $platform->pivot->minversion }}),
                         @endforeach
                     </td>
                 </tr>
